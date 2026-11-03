@@ -1,168 +1,451 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Virtual International Aviation Alliance — connecting PTFS airlines.">
-  <title>VIAA | Virtual International Aviation Alliance</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-<header class="header">
-  <a href="#home" class="brand">
-    <img src="https://cdn.discordapp.com/attachments/1558107924897865788/1562741731106234400/VIAA.png?ex=6aeaea27&is=6ae998a7&hm=58a31c6f9a439c674bdfaeddbb292d18ea9e3f19843f35ea2b1599dfa6c6cd86" alt="VIAA Logo">
-    <span>VIAA<small>AVIATION ALLIANCE</small></span>
-  </a>
-
-  <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
-
-  <nav class="nav">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#alliance">Alliance</a>
-    <a href="#disclaimer">Disclaimer</a>
-    <a href="#contact" class="nav-cta">Contact ↗</a>
-  </nav>
-</header>
-
-<main>
-  <section class="hero" id="home">
-    <div class="hero-copy">
-      <p class="eyebrow">✦ CONNECTING PTFS AIRLINES</p>
-
-      <h1>
-        One alliance.<br>
-        <span>Infinite horizons.</span>
-      </h1>
-
-      <p class="intro">
-        Bringing PTFS airlines together through collaboration,
-        community, and a shared passion for aviation.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="#about" class="btn">Discover VIAA →</a>
-        <a href="#contact" class="btn btn-outline">Join the Alliance ↗</a>
-      </div>
-
-      <div class="stats">
-        <div>
-          <b>GLOBAL</b>
-          <small>Community</small>
-        </div>
-        <div>
-          <b>PTFS</b>
-          <small>Airline Network</small>
-        </div>
-        <div>
-          <b>UNITED</b>
-          <small>By Aviation</small>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-art">
-      <div class="orbit orbit-one"></div>
-      <div class="orbit orbit-two"></div>
-      <img src="https://cdn.discordapp.com/attachments/1558107924897865788/1562741731106234400/VIAA.png?ex=6aeaea27&is=6ae998a7&hm=58a31c6f9a439c674bdfaeddbb292d18ea9e3f19843f35ea2b1599dfa6c6cd86" alt="VIAA Emblem">
-      <div class="floating-label">VIRTUAL AVIATION NETWORK</div>
-    </div>
-  </section>
-
-  <section class="section" id="about">
-    <p class="eyebrow">WHO WE ARE</p>
-    <h2>Meet the <span>alliance.</span></h2>
-
-    <p class="section-intro">
-      Virtual International Aviation Alliance (VIAA) is a PTFS
-      aviation alliance designed to connect airlines and build
-      a stronger virtual aviation community.
-    </p>
-
-    <div class="cards">
-      <article class="card">
-        <div class="card-icon">✈</div>
-        <h3>Connected Airlines</h3>
-        <p>
-          Build connections with other PTFS airlines and grow
-          together as a network.
-        </p>
-      </article>
-
-      <article class="card">
-        <div class="card-icon">◎</div>
-        <h3>Shared Community</h3>
-        <p>
-          Bring aviation enthusiasts together around teamwork
-          and common goals.
-        </p>
-      </article>
-
-      <article class="card">
-        <div class="card-icon">✦</div>
-        <h3>United Vision</h3>
-        <p>
-          Support a collaborative environment for the virtual
-          aviation world.
-        </p>
-      </article>
-    </div>
-  </section>
-
-  <section class="alliance-section" id="alliance">
-    <div class="alliance-content">
-      <p class="eyebrow">THE VIAA VISION</p>
-      <h2>Better together.<br><span>Built to connect.</span></h2>
-      <p>
-        Our alliance focuses on connecting PTFS airlines,
-        encouraging cooperation, and creating opportunities
-        for the community to take flight.
-      </p>
-      <a href="#contact" class="btn">Connect with VIAA ↗</a>
-    </div>
-  </section>
-
-  <section class="section contact" id="contact">
-    <p class="eyebrow">GET IN TOUCH</p>
-    <h2>Ready for <span>takeoff?</span></h2>
-    <p>Interested in VIAA? Connect with our community.</p>
-
-    <!-- Replace this URL with your actual Discord invite -->
-    <a href="https://discord.com" target="_blank" rel="noopener" class="btn">
-      Open Discord ↗
-    </a>
-  </section>
-
-  <section class="disclaimer" id="disclaimer">
-    <strong>ⓘ Important Disclaimer</strong>
-    <p>
-      VIAA is a virtual community alliance created for the
-      PTFS (Pilot Training Flight Simulator) experience.
-      It is not a real airline, aviation operator, or registered
-      business. All activities are virtual and for entertainment
-      and community purposes only.
-    </p>
-  </section>
-</main>
-
-<footer>
-  <span>VIAA · Virtual International Aviation Alliance</span>
-  <span>© <span id="year"></span> · Virtual community, not a real business.</span>
-</footer>
-
-<script src="script.js"></script>
-</body>
-</html>
-
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+:root {
+  --bg: #07111f;
+  --bg-light: #0d1b2d;
+  --blue: #38bdf8;
+  --blue-dark: #087bb8;
+  --text: #f4f8ff;
+  --muted: #a5b4c8;
+  --border: rgba(255, 255, 255, 0.10);
 }
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 8%;
+  background: rgba(7, 17, 31, 0.88);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.brand img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.brand small {
+  display: block;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 3px;
+  margin-top: 3px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav a {
+  font-size: 13px;
+  color: var(--muted);
+  transition: color 0.3s;
+}
+
+.nav a:hover {
+  color: var(--blue);
+}
+
+.nav .nav-cta {
+  color: var(--blue);
+}
+
+.menu-toggle {
+  display: none;
+  color: white;
+  background: transparent;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.hero {
+  min-height: 88vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+  padding: 70px 8%;
+  background:
+    radial-gradient(circle at 75% 40%, rgba(14, 116, 200, 0.17), transparent 40%),
+    linear-gradient(135deg, #07111f, #0a1729);
+}
+
+.eyebrow {
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  margin-bottom: 22px;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 5.4vw, 76px);
+  line-height: 1.08;
+  font-weight: 900;
+  letter-spacing: -3px;
+}
+
+h1 span,
+h2 span {
+  color: var(--blue);
+}
+
+.intro {
+  max-width: 500px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin: 25px 0;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 22px;
+  background: var(--blue-dark);
+  border: 1px solid var(--blue-dark);
+  border-radius: 6px;
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(56, 189, 248, 0.2);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--border);
+}
+
+.btn-outline:hover {
+  border-color: var(--blue);
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 55px;
+  flex-wrap: wrap;
+}
+
+.stats div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stats b {
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.stats small {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.hero-art {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.hero-art img {
+  width: min(75%, 400px);
+  z-index: 2;
+  filter: drop-shadow(0 0 45px rgba(56, 189, 248, 0.3));
+  animation: float 5s ease-in-out infinite;
+}
+
+.orbit {
+  position: absolute;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 50%;
+  width: 420px;
+  height: 420px;
+  max-width: 100%;
+  animation: rotate 20s linear infinite;
+}
+
+.orbit-two {
+  width: 330px;
+  height: 330px;
+  border-style: dashed;
+  animation-direction: reverse;
+  animation-duration: 30s;
+}
+
+.floating-label {
+  position: absolute;
+  bottom: 25px;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--muted);
+}
+
+.section {
+  padding: 100px 8%;
+  text-align: center;
+}
+
+.section h2,
+.alliance-section h2 {
+  font-size: clamp(34px, 4vw, 55px);
+  font-weight: 900;
+  letter-spacing: -2px;
+}
+
+.section-intro {
+  max-width: 700px;
+  margin: 22px auto 50px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  text-align: left;
+}
+
+.card {
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  padding: 35px;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.card-icon {
+  font-size: 30px;
+  color: var(--blue);
+  margin-bottom: 25px;
+}
+
+.card h3 {
+  font-size: 19px;
+  margin-bottom: 15px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.alliance-section {
+  padding: 100px 8%;
+  background:
+    radial-gradient(circle at 80% 50%, rgba(56, 189, 248, 0.12), transparent 40%),
+    var(--bg-light);
+}
+
+.alliance-content {
+  max-width: 700px;
+}
+
+.alliance-section p:not(.eyebrow) {
+  color: var(--muted);
+  line-height: 1.8;
+  margin: 25px 0;
+}
+
+.contact p:not(.eyebrow) {
+  color: var(--muted);
+  margin: 22px 0;
+}
+
+.disclaimer {
+  margin: 0 8% 70px;
+  padding: 25px;
+  background: rgba(245, 158, 11, 0.06);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 8px;
+}
+
+.disclaimer strong {
+  color: #fbbf24;
+  font-size: 14px;
+}
+
+.disclaimer p {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 30px 8%;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* Animations */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive layout */
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .intro {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-buttons,
+  .stats {
+    justify-content: center;
+  }
+
+  .hero-art {
+    min-height: 330px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .alliance-content {
+    text-align: center;
+    margin: auto;
+  }
+}
+
+@media (max-width: 650px) {
+  .header {
+    padding: 15px 5%;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    gap: 22px;
+    padding: 25px;
+    background: #0a1729;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav.active {
+    display: flex;
+  }
+
+  .hero,
+  .section,
+  .alliance-section {
+    padding: 70px 5%;
+  }
+
+  .hero h1 {
+    letter-spacing: -2px;
+  }
+
+  .stats {
+    gap: 25px;
+  }
+
+  .card {
+    padding: 25px;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+    padding: 25px 5%;
+  }
+
+  .disclaimer {
+    margin: 0 5% 50px;
+  }
 }
