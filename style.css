@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Virtual International Aviation Alliance — connecting PTFS airlines.">
+  <title>VIAA | Virtual International Aviation Alliance</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <a href="#home" class="brand">
+    <img src="https://cdn.discordapp.com/attachments/1558107924897865788/1562741731106234400/VIAA.png?ex=6aeaea27&is=6ae998a7&hm=58a31c6f9a439c674bdfaeddbb292d18ea9e3f19843f35ea2b1599dfa6c6cd86" alt="VIAA Logo">
+    <span>VIAA<small>AVIATION ALLIANCE</small></span>
+  </a>
+
+  <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+
+  <nav class="nav">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#alliance">Alliance</a>
+    <a href="#disclaimer">Disclaimer</a>
+    <a href="#contact" class="nav-cta">Contact ↗</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="hero-copy">
+      <p class="eyebrow">✦ CONNECTING PTFS AIRLINES</p>
+
+      <h1>
+        One alliance.<br>
+        <span>Infinite horizons.</span>
+      </h1>
+
+      <p class="intro">
+        Bringing PTFS airlines together through collaboration,
+        community, and a shared passion for aviation.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#about" class="btn">Discover VIAA →</a>
+        <a href="#contact" class="btn btn-outline">Join the Alliance ↗</a>
+      </div>
+
+      <div class="stats">
+        <div>
+          <b>GLOBAL</b>
+          <small>Community</small>
+        </div>
+        <div>
+          <b>PTFS</b>
+          <small>Airline Network</small>
+        </div>
+        <div>
+          <b>UNITED</b>
+          <small>By Aviation</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <div class="orbit orbit-one"></div>
+      <div class="orbit orbit-two"></div>
+      <img src="https://cdn.discordapp.com/attachments/1558107924897865788/1562741731106234400/VIAA.png?ex=6aeaea27&is=6ae998a7&hm=58a31c6f9a439c674bdfaeddbb292d18ea9e3f19843f35ea2b1599dfa6c6cd86" alt="VIAA Emblem">
+      <div class="floating-label">VIRTUAL AVIATION NETWORK</div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <p class="eyebrow">WHO WE ARE</p>
+    <h2>Meet the <span>alliance.</span></h2>
+
+    <p class="section-intro">
+      Virtual International Aviation Alliance (VIAA) is a PTFS
+      aviation alliance designed to connect airlines and build
+      a stronger virtual aviation community.
+    </p>
+
+    <div class="cards">
+      <article class="card">
+        <div class="card-icon">✈</div>
+        <h3>Connected Airlines</h3>
+        <p>
+          Build connections with other PTFS airlines and grow
+          together as a network.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">◎</div>
+        <h3>Shared Community</h3>
+        <p>
+          Bring aviation enthusiasts together around teamwork
+          and common goals.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">✦</div>
+        <h3>United Vision</h3>
+        <p>
+          Support a collaborative environment for the virtual
+          aviation world.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="alliance-section" id="alliance">
+    <div class="alliance-content">
+      <p class="eyebrow">THE VIAA VISION</p>
+      <h2>Better together.<br><span>Built to connect.</span></h2>
+      <p>
+        Our alliance focuses on connecting PTFS airlines,
+        encouraging cooperation, and creating opportunities
+        for the community to take flight.
+      </p>
+      <a href="#contact" class="btn">Connect with VIAA ↗</a>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <p class="eyebrow">GET IN TOUCH</p>
+    <h2>Ready for <span>takeoff?</span></h2>
+    <p>Interested in VIAA? Connect with our community.</p>
+
+    <!-- Replace this URL with your actual Discord invite -->
+    <a href="https://discord.com" target="_blank" rel="noopener" class="btn">
+      Open Discord ↗
+    </a>
+  </section>
+
+  <section class="disclaimer" id="disclaimer">
+    <strong>ⓘ Important Disclaimer</strong>
+    <p>
+      VIAA is a virtual community alliance created for the
+      PTFS (Pilot Training Flight Simulator) experience.
+      It is not a real airline, aviation operator, or registered
+      business. All activities are virtual and for entertainment
+      and community purposes only.
+    </p>
+  </section>
+</main>
+
+<footer>
+  <span>VIAA · Virtual International Aviation Alliance</span>
+  <span>© <span id="year"></span> · Virtual community, not a real business.</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
