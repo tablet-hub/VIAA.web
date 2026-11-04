@@ -449,3 +449,81 @@ footer {
     margin: 0 5% 50px;
   }
 }
+/* ==========================================
+   VIAA DISCORD AUTHENTICATION
+========================================== */
+
+.auth-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.auth-button {
+  padding: 10px 16px;
+  background: var(--blue-dark);
+  color: white;
+  border: 1px solid var(--blue-dark);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-button:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.auth-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#account-panel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#account-panel[hidden] {
+  display: none;
+}
+
+#account-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--blue);
+}
+
+#account-name {
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .header {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .auth-area {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 650px) {
+  .auth-area {
+    width: 100%;
+    justify-content: center;
+  }
+
+  #account-panel {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
