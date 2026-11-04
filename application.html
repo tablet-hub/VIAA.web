@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIAA | Application</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 30px 15px;
+      background: #0b1220;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 30px;
+      background: #172238;
+      border: 1px solid #293b59;
+      border-radius: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #60a5fa;
+    }
+
+    p {
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #475569;
+      border-radius: 7px;
+      background: #0f172a;
+      color: white;
+      font-size: 15px;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 14px;
+      border: none;
+      border-radius: 7px;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    #message {
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    a {
+      display: block;
+      margin-top: 22px;
+      text-align: center;
+      color: #60a5fa;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>VIAA Application</h1>
+    <p>Welcome to the Virtual International Aviation Alliance. Complete the form below to submit your application.</p>
+
+    <p id="welcome">Checking your account...</p>
+
+    <form id="applicationForm" hidden>
+      <label for="applicantName">Your name</label>
+      <input id="applicantName" type="text" required>
+
+      <label for="applicationType">Application type</label>
+      <select id="applicationType" required>
+        <option value="Membership">VIAA Membership</option>
+        <option value="Airline Recognition">Airline Recognition</option>
+      </select>
+
+      <label for="organizationName">Airline / Organization name</label>
+      <input id="organizationName" type="text" placeholder="Enter your organization name">
+
+      <label for="reason">Why are you applying?</label>
+      <textarea id="reason" required placeholder="Explain why you want to join VIAA..."></textarea>
+
+      <button id="submitButton" type="submit">Submit Application</button>
+    </form>
+
+    <div id="message"></div>
+
+    <a href="account.html">Back to My Account</a>
+  </div>
+
+  <script>
+    const SUPABASE_URL = "https://foqxszfpvxzpangyfhml.supabase.co";
+    const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_k1mIKAWrLFkDUsiGFt8FAA_W9WyOkgl";
+
+    const supabaseClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+
+    const form = document.getElementById("applicationForm");
+    const message = document.getElementById("message");
+    const welcome = document.getElementById("welcome");
+    const submitButton = document.getElementById("submitButton");
+
+    let discordId = null;
+
+    async function initialise() {
+      const { data, error } = await supabaseClient.auth.getSession();
+
+      if (error || !data.session) {
+        window.location.href = "index.html";
+        return;
+      }
+
+      const user = data.session.user;
+      discordId = user.user_metadata.provider_id;
+
+      if (!discordId) {
+        welcome.textContent = "Your Discord ID could not be found. Please contact VIAA support.";
+        return;
+      }
+
+      const username =
+        user.user_metadata.global_name ||
+        user.user_metadata.full_name ||
+        user.user_metadata.name ||
+        "Member";
+
+      document.getElementById("applicantName").value = username;
+      welcome.textContent = "Welcome, " + username + "!";
+
+      const { data: existing, error: checkError } =
+        await supabaseClient
+          .from("applications")
+          .select("id")
+          .eq("discord_id", discordId)
+          .eq("status", "pending")
+          .limit(1);
+
+      if (checkError) {
+        message.textContent = "Could not check your applications. Please try again.";
+        return;
+      }
+
+      if (existing && existing.length > 0) {
+        message.textContent = "You already have a pending application. Please wait for an administrator to review it.";
+        return;
+      }
+
+      form.hidden = false;
+    }
+
+    form.addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      if (!discordId) return;
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Submitting...";
+      message.textContent = "";
+
+      const application = {
+        discord_id: discordId,
+        applicant_name: document.getElementById("applicantName").value.trim(),
+        application_type: document.getElementById("applicationType").value,
+        organization_name: document.getElementById("organizationName").value.trim(),
+        reason: document.getElementById("reason").value.trim(),
+        status: "pending"
+      };
+
+      const { error } = await supabaseClient
+        .from("applications")
+        .insert([application]);
+
+      if (error) {
+        message.textContent = "Application failed: " + error.message;
+        submitButton.disabled = false;
+        submitButton.textContent = "Submit Application";
+        return;
+      }
+
+      form.hidden = true;
+      message.textContent = "Your application has been submitted successfully! Status: PENDING.";
+    });
+
+    initialise();
+  </script>
+</body>
+</html>
