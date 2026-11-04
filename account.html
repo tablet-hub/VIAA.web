@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account | VIAA</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .account-page {
+      max-width: 1100px;
+      margin: auto;
+      padding: 60px 8%;
+    }
+
+    .account-heading {
+      margin-bottom: 35px;
+    }
+
+    .account-heading h1 {
+      font-size: clamp(32px, 5vw, 50px);
+      font-weight: 900;
+    }
+
+    .account-heading p {
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .account-profile {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 25px;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-bottom: 25px;
+    }
+
+    .account-profile img {
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      border: 2px solid var(--blue);
+    }
+
+    .account-profile h2 {
+      font-size: 23px;
+    }
+
+    .account-profile p {
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .account-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .account-card {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 25px;
+    }
+
+    .account-card h3 {
+      font-size: 17px;
+      margin-bottom: 20px;
+    }
+
+    .miles-number {
+      font-size: 42px;
+      color: var(--blue);
+      font-weight: 900;
+    }
+
+    .account-muted {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    .account-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .account-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+    }
+
+    .status {
+      padding: 6px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .status-approved {
+      color: #4ade80;
+      background: rgba(74,222,128,0.12);
+    }
+
+    .status-pending {
+      color: #fbbf24;
+      background: rgba(251,191,36,0.12);
+    }
+
+    .status-rejected {
+      color: #f87171;
+      background: rgba(248,113,113,0.12);
+    }
+
+    .account-back {
+      display: inline-block;
+      margin-bottom: 25px;
+      color: var(--blue);
+    }
+
+    #account-message {
+      color: var(--muted);
+      margin: 20px 0;
+    }
+
+    @media (max-width: 700px) {
+      .account-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .account-profile {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <a href="index.html" class="brand">
+    <img src="https://cdn.discordapp.com/attachments/1558107924897865788/1562741731106234400/VIAA.png?ex=6aeaea27&is=6ae998a7&hm=58a31c6f9a439c674bdfaeddbb292d18ea9e3f19843f35ea2b1599dfa6c6cd86"
+      alt="VIAA Logo">
+    <span>VIAA<small>AVIATION ALLIANCE</small></span>
+  </a>
+
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="account.html">My Account</a>
+    <a href="index.html#alliance">Alliance</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<main class="account-page">
+
+  <a href="index.html" class="account-back">← Back to Home</a>
+
+  <div class="account-heading">
+    <p class="eyebrow">MEMBER PORTAL</p>
+    <h1>My <span style="color:var(--blue)">Account.</span></h1>
+    <p>Welcome to your VIAA member dashboard.</p>
+  </div>
+
+  <div id="account-message">Checking your account...</div>
+
+  <section id="account-content" hidden>
+
+    <div class="account-profile">
+      <img id="profile-avatar" alt="Profile Avatar">
+
+      <div>
+        <h2 id="profile-username">Loading username...</h2>
+        <p id="profile-role">Server Role: Loading...</p>
+      </div>
+    </div>
+
+    <div class="account-grid">
+
+      <article class="account-card">
+        <h3>✈ SkyMiles Balance</h3>
+        <div class="miles-number" id="miles-balance">0</div>
+        <p class="account-muted">Your VIAA loyalty miles</p>
+      </article>
+
+      <article class="account-card">
+        <h3>🛡 My Server Role</h3>
+        <div class="miles-number" id="role-display"
+          style="font-size:28px">Member</div>
+        <p class="account-muted">
+          Your current position in the VIAA server
+        </p>
+      </article>
+
+      <article class="account-card">
+        <h3>🌐 Recognised Servers</h3>
+        <div class="account-list" id="recognized-servers">
+          <p class="account-muted">Loading recognised servers...</p>
+        </div>
+      </article>
+
+      <article class="account-card">
+        <h3>📋 My Application</h3>
+        <div class="account-list" id="my-application">
+          <p class="account-muted">Loading application...</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>VIAA · Virtual International Aviation Alliance</span>
+  <span>© <span id="year"></span> · Virtual community, not a real business.</span>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="account.js"></script>
+
+</body>
+</html>
